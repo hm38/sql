@@ -1,0 +1,78 @@
+CREATE DATABASE quanlysinhdiem;
+USE quanlysinhdiem;
+CREATE TABLE tbl_sinhvien (
+  id int AUTO_INCREMENT,
+  ten varchar(50),
+  tuoi int,
+  gioiTinh int,
+  maLop varchar(10),
+  PRIMARY KEY (id)
+);
+CREATE TABLE tbl_giaovien (
+  id int AUTO_INCREMENT,
+  ten varchar(255),
+  tuoi int,
+  gioiTinh varchar(10),
+  soNamKN int,
+  PRIMARY KEY (id)
+
+);
+
+
+CREATE TABLE tbl_diem (
+  id int AUTO_INCREMENT,
+  maSV int,
+  diemToan float,
+  diemLy float,
+  diemHoa float,
+  PRIMARY KEY (id),
+  	FOREIGN KEY (maSV) REFERENCES tbl_sinhvien(id)
+             
+  );
+  
+ 
+  
+  INSERT INTO tbl_sinhvien (id, ten, tuoi, gioiTinh, maLop)
+VALUES
+(1, 'Nguyen Minh A', 20, 'Nam', 'A01'),
+(2, 'Tran Minh B', 19, 'Nữ', 'A02'),
+(3, 'Hoang Minh C', 21, 'Nam', 'B01'),
+(4, 'Ton Minh D', 18, 'Nữ', 'B02'),
+(5, 'Dam Minh E', 22, 'Nam', 'C01'),
+(6, 'Quach Tinh', 20, 'Nữ', 'C02'),
+(7, 'Hoang Dung', 19, 'Nam', 'D01'),
+(8, 'Le Hong Nhung', 21, 'Nữ', 'D02'),
+(9, 'Do My Linh', 18, 'Nam', 'E01'),
+(10, 'Dang Ngoc Han', 22, 'Nữ', 'E02');
+  
+  
+  INSERT INTO tbl_giaovien (id, ten, tuoi, gioiTinh, soNamKN)
+VALUES
+(1, 'Nguyen Van Khanh', 35, 'Nam', 5),
+(2, 'Trinh Cong To', 40, 'Nữ', 10),
+(3, 'Hoang Thu Huyen', 30, 'Nam', 3),
+(4, 'Le Ninh', 45, 'Nữ', 15),
+(5, 'Truong Quoc Tuan', 38, 'Nam', 8),
+(6, 'Le Thuy Mien', 42, 'Nữ', 12),
+(7, 'Truong Anh Minh', 33, 'Nam', 4),
+(8, 'Vu Cong Khe', 39, 'Nữ', 9),
+(9, 'Nguyen Tat Thang', 31, 'Nam', 2),
+(10, 'Tran Thuy Kieu', 43, 'Nữ', 13);
+
+INSERT INTO tbl_diem (id, maSV, diemToan, diemLy, diemHoa)
+VALUES
+(1, '1', 8.5, 7.0, 9.0),
+(2, '2', 7.0, 8.0, 6.5),
+(3, '3', 9.0, 8.5, 7.5),
+(4, '3', 6.5, 7.0, 8.0),
+(5, '5', 8.0, 9.0, 7.5),
+(6, '6', 7.5, 6.5, 8.5),
+(7, '7', 9.0, 7.5, 8.0),
+(8, '8', 8.5, 8.0, 9.0),
+(9, '9', 6.0, 7.5, 6.5),
+(10, '10', 9.0, 9.5, 8.5);
+
+  
+  
+ 
+ 

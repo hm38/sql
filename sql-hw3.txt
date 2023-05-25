@@ -1,0 +1,49 @@
+
+
+/* 1. Đưa ra thông tin gồm maGV, tenGV, tenKhoa của tất cả giảng viên*/
+SELECT giangvien.maGV, giangvien.tenGV, khoa.tenKhoa
+FROM giangvien
+JOIN khoa ON giangvien.maKhoa = khoa.maKhoa;
+
+/* 2. Đưa ra thông tin gồm maGV, tenGV, tenKhoa của các giảng viên khoa 'Dia ly'*/
+SELECT giangvien.maGV, giangvien.tenGV, khoa.tenKhoa
+FROM giangvien
+JOIN khoa ON giangvien.maKhoa = khoa.maKhoa
+where khoa.tenKhoa= "Khoa Địa lý";
+
+/*  Cho biết số sinh viên của khoa 'CNSH'*/
+select count(*) from sinhvien where maKhoa="Bio"
+
+
+
+/* 4. Đưa ra danh sách gồm maSV, tenSV, namSinh của các sinh viên khoa 'Toan'*/
+SELECT sinhvien.maSV, sinhvien.tenSV, sinhvien.namSinh
+FROM sinhvien
+JOIN khoa ON sinhvien.maKhoa = khoa.maKhoa
+WHERE khoa.tenKhoa = 'Khoa Toán học';
+
+
+/* 5. Cho biết số giảng viên của khoa 'CNSH'*/
+SELECT COUNT(*) as count_giangvien
+FROM giangvien
+WHERE maKhoa = 'Bio';
+
+/* 6. Cho biết thông tin về sinh viên không tham gia thực tập*/
+SELECT a.*
+FROM sinhvien a
+LEFT JOIN huongdan b ON a.id = b.maSV
+WHERE b.maSV IS NULL;
+
+/*7. Đưa ra maKhoa, tenKhoa, số giảng viên của mỗi khoa*/
+
+SELECT k.maKhoa, k.tenKhoa, COUNT(g.id) as giangvien_count
+FROM khoa k
+LEFT JOIN giangvien g ON k.maKhoa = g.maKhoa
+GROUP BY k.maKhoa, k.tenKhoa;
+
+
+/*8. Cho biết sdt của khoa mà sinh viên tên Nguyễn Văn A đang theo học*/
+SELECT k.sdt
+FROM sinhvien s
+JOIN khoa k ON s.maKhoa = k.maKhoa
+WHERE s.tenSV = 'Nguyễn Văn A';
